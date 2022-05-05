@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity(), ContractInterface.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         presenter = MainActivityPresenter(this)
+
 //        Log.d("PRESENTER", presenter.toString())
         initView()
     }
@@ -26,7 +27,9 @@ class MainActivity : AppCompatActivity(), ContractInterface.View {
     }
 
     override fun initView() {
-        flowerList = presenter!!.getTODOs()
+//        updList()
+        flowerList = presenter?.getTODOs()!!;
+//        presenter?.getTODOs()
         val taskAdapter = TasksAdapter {task -> adapterOnClick(task) }
         val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
         recyclerView.adapter = taskAdapter
@@ -34,10 +37,15 @@ class MainActivity : AppCompatActivity(), ContractInterface.View {
     }
 
     override fun updView() {
-        flowerList = presenter!!.getTODOs()
+//        updList()
+        flowerList = presenter?.getTODOs()!!;
         val taskAdapter = TasksAdapter {task -> adapterOnClick(task) }
         val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
         recyclerView.adapter = taskAdapter
         taskAdapter.submitList(this.flowerList)
+    }
+
+    override fun updList(lst: MutableList<Task>) {
+        flowerList = lst;
     }
 }

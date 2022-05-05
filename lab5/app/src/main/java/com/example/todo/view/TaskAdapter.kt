@@ -31,11 +31,11 @@ class TasksAdapter(private val onClick: (Task) -> Unit) :
         fun bind(Task: Task) {
             currentTask = Task
 
-            TaskTitleView.text = Task.title
+            TaskCompletedView.text = Task.title
             if (Task.completed) {
-                TaskCompletedView.text = "DONE!"
+                TaskTitleView.text = "DONE!"
             }   else {
-                TaskCompletedView.text = "TODO!"
+                TaskTitleView.text = "TODO!"
             }
         }
     }

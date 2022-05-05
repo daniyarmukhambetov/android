@@ -7,6 +7,7 @@ interface ContractInterface {
     interface View {
         fun initView()
         fun updView()
+        fun updList(lst: MutableList<Task>)
     }
     interface Presenter {
         fun getTODOs(): MutableList<Task>
